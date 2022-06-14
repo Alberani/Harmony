@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Bungee+Shade&family=Raleway&display=swap');
+
+:root {
+    --cor-claro: #CD0101;
+    --cor-escuro: #4D0000;
+    --cor-medio: #8C0000;
+    --cor-bg: #000;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-medio);
+    font-family: 'Raleway', sans-serif;
+}
+/* HEADER */
+.header {
+    background-color: var(--cor-medio);
+    border-bottom: var(--cor-bg) 4px solid;
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    width: 100%;
+}
+
+.header .container {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.navbar {
+    width: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    color: var(--cor-escuro);
+    font-size: 1.4rem;
+}
+
+.logo {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 3rem;
+    color: var(--cor-bg);
+}
+
+a img{
+    height: 5rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--cor-escuro);
+}
+
+.here {
+    font-weight: 800;
+}
+/* BANNER */
+
+.banner {
+    height: 90vh;
+    padding: 40px 0;
+    color: white;
+    background-image: url("../assets/imgs/background.jpg");
+    background-size: cover;
+    margin-top: 10%;
+}
+
+.banner .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+}
+
+/* CASDASTRO */
+
+.card {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 60vh;
+    width: 25vw;
+    background-color: var(--cor-medio);
+    border: var(--cor-escuro) 4px solid;
+    border-radius: 4%;
+}
+
+.card span {
+    font-size: 0.9rem;
+}
+
+.card input {
+    background: transparent;
+    width: 70%;
+    padding: 0 5px;
+    line-height: 1.2;
+    overflow: visible;
+    border: none;
+    outline: none;
+    margin-top: 0.5rem;
+    color: #d9d9d9;
+    font-family: 'Raleway', sans-serif;
+    
+}
+::placeholder {
+    color: var(--cor-escuro);
+}
+
+.card .separador {
+    border-bottom: var(--cor-escuro) 2px solid;
+    margin-bottom: 1rem;
+    padding-bottom: 0.7rem;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn{
+    background-color: var(--cor-escuro);
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    color: #d9d9d9;
+    height: 8%;
+    width: 58%;
+    cursor: pointer;
+    border-radius: 6%;
+}
+
+.btn:active {
+    background-color: #3f0101;
+}
+
+/* LOGIN */
+
+.Login .separador input {
+    font-size: 1.4rem;
+    width: 90%;
+}
+
+.Login .separador span {
+    font-size: 1.5rem;
+}
+
+/* HOME */
+
+.title {
+    font-family: 'Bungee Inline', cursive;
+    font-size: 4rem;
+}
+
+.home {
+    padding-left: 7%;
+    padding-top: 10%;
+}
+
+.artistas {
+    background-color: var(--cor-escuro);
+    height: 60vh;
+    border-bottom: var(--cor-bg) 4px solid;
+    border-top: var(--cor-bg) 4px solid;
+    color: #ffffff;
+}
+
+.artistas .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.artistas .container .box {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    box-shadow: 20px 20px rgba(0, 0, 0, 0.30);
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    background-color: #3d0101;
+}
+
+.artistas .container .box:hover{
+    box-shadow: 10px 10px rgba(0,0,0,0.50);
+}
+
+.portrait {
+    height: 200px;
+    border-radius: 50%
+}
+
+.artistas span {
+    margin-left: 5%;
+    font-size: 2rem;
+}
+
+.artistas .container .box span {
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.albuns {
+    background-color: var(--cor-escuro);
+    height: 90vh;
+    border-bottom: var(--cor-bg) 4px solid;
+    border-top: var(--cor-bg) 4px solid;
+    color: #ffffff;
+}
+
+.albuns .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.albuns span {
+    margin-left: 5%;
+    font-size: 2rem;
+}
+
+.cover {
+    height: 100%;
+    border-radius: 6px;
+}
+
+.alinhador {
+    padding: 16px;
+}
+
+.cardAlbum {
+    background-color: #ffffff;
+    color: var(--cor-escuro);
+    border-radius: 6px;
+    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.80);
+
+}
+
+.cardAlbum:hover {
+    box-shadow: 0 32px 64px 0 rgba(0, 0, 0, 1);
+}
+
+.Playlist {
+    height: 100vh;
+}
+
+/* SOBRE */
+
+.sidebar {
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    width: 25%;
+    background-color: var(--cor-escuro);
+}
+
+.sidebar .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar .container img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin-top: 50%;
+    border: solid 2px #000;
+}
+
+.sobre {
+    height: 100%;
+    width: 75%;
+    background-color: #161618;
+}
+
+/* FOOTER */
+
+.footer {
+    background-color: var(--cor-medio);
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.6rem;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+}
+
+.b {
+    border-top: solid 4px #000;
+}
+
+/* Área Logada */
+
+.log {
+    color: white;
+}
+
+.headerLeft {
+    height: 100%;
+    width: 25%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-right: 4px solid #4D0000;
+    background-color: #212124;
+}
+
+.dash {
+    height: 100%;
+    width: 75%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #161618;
+    border-left: 4px solid #313135;
+    max-height: 100vh;
+}
+
+.headerLeft h1 {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 3rem;
+    background:  -webkit-linear-gradient(180deg, #8C0000 0%, #5B008C 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.hello {
+    font-size: 1.2rem;
+}
+
+.btns {
+    display: flex;
+}
+
+.btnHeader {
+    color: white;
+    background-color: #161618;
+    border-radius: 15%;
+    border: 3px solid #313135;
+    height: 50px;
+    width: 150px;
+    font-size: 1.4rem;
+    font-family: 'Raleway', sans-serif;
+}
+
+.Dest {
+    color: #8500CC;
+}
+
+.btnHeader:active {
+    background-color: #3f0101;
+}
+
+.pergunta {
+    margin-top: 7%;
+    font-size: 2rem;
+    margin-bottom: 5%;
+}
+
+.vote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnSol {
+    height: 13vh;
+    border-radius: 4%;
+    border: 2px solid #CD0101;
+    background-color: #8C0000;
+    margin-right: 100px;
+    cursor: pointer;
+}
+
+.btnSol:active {
+    background-color: #5e0000;
+}
+
+.btnSol img {
+    height: 90px;
+}
+
+.btnLua {
+    height: 13vh;
+    border-radius: 4%;
+    border: 2px solid #8500CC;
+    background-color: #5B008C;
+    cursor: pointer;
+}
+
+.btnLua:active {
+    background-color: #300049;
+}
+
+
+.btnLua img {
+    height: 90px;
+}
+
+.pt {
+    overflow: auto;
+}
+
+.pub {
+    padding: 3px;
+    border: 3px solid #313135;
+    border-radius: 4%;
+}
+
+.results {
+    padding: 8px;
+    border: 3px solid #313135;
+    border-radius: 4%;
+}
+
+.posts button {
+    color: white;
+    background-color: #161618;
+    border-radius: 15%;
+    border: 3px solid #313135;
+    height: 30px;
+    width: 70px;
+    margin-left: 10px;
+    font-family: 'Raleway', sans-serif;
+}
+
+textarea {
+    color: white;
+    background-color: #161618;
+    border: 3px solid #313135;
+    border-radius: 4%;
+    font-family: 'Raleway', sans-serif;
+    width: 400px;
+
+}
+
+input {
+    color: white;
+    background-color: #161618;
+    border: 3px solid #313135;
+    border-radius: 4%;
+    font-family: 'Raleway', sans-serif;
+}

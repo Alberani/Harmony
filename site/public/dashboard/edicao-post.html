@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony | Editar</title>
+    <link rel="stylesheet" href="../css/styleA.css">
+    <script src="../js/funcoes.js"></script>
+</head>
+
+<body onload="listarInfosDeUm()" class="log">
+    <div class="headerLeft">
+        <h1>HARMONY</h1>
+        <div class="hello">
+            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+        </div>
+        <a href="votacao.html">  
+            <button class="btnHeader">Votação</button>
+        </a>
+        <a href="posts.html">
+            <button class="btnHeader Dest">Posts</button>
+        </a>
+            <button class="btnHeader" onclick="limparSessao()">Sair</button>
+    </div>
+        <div class="dash">
+            <div class="posts pub">
+                <div class="container">
+                    <h1>Editar um aviso</h1>
+                    <label>Insira um novo Conteúdo</label>
+                    <br>
+                    <textarea id="textarea_conteudo" maxlength="255" rows="5"></textarea>
+                    <br>
+                    <button onclick="editar()">Editar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    function listarInfosDeUm() {
+        console.log("Criar função de trazer informações de post escolhido");
+    }
+
+    function editar() {
+        fetch(`/avisos/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                conteudo: textarea_conteudo.value
+            })
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "/dashboard/posts.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function limparSessao() {
+    sessionStorage.clear();
+    window.location = "../loginA.html";
+    }
+</script>

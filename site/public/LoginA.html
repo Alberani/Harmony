@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/styleA.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <span class="logo">HARMONY</span>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li>|</li>
+                <li><a href="LoginA.html" class="here">Login</a></li>
+                <li><a href="CadastroA.html">Cadastro</a></li>
+                <li>|</li>
+                <li>
+                    <a href="LoginB.html">
+                        <img src="assets/imgs/sol.gif">
+                    </a>
+                </li>
+                <li>
+                    <img src="assets/imgs/musicOn.png" onclick="playPause()" id="btnPlay">
+                    <img src="assets/imgs/musicOff.png" onclick="playPause()" style="display:none;" id="btnPause">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="container">
+            <div class="card Login">
+                <h2>Bem vindo de volta!</h2>
+                <div class="separador">
+                    <span class="tipo_campo">E-mail:</span>
+                    <input id="email_input" type="text" placeholder="nome@email.com">
+                </div>
+                <div class="separador">
+                    <span class="tipo_campo">Senha:</span>
+                    <input id="senha_input" type="password" placeholder="******">
+                </div>
+                <button class="btn" onclick="entrar()">Entrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <span>Projetado por Pedro Alberani &hearts; </span>
+            <audio id="player" loop>
+                <source src="assets/music/highest.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+</body>
+</html>,
+<script>
+    function playPause() {
+    var musicPlayer = document.getElementById('player');
+    if (musicPlayer.paused) {
+        musicPlayer.play();
+        btnPlay.style.display = `none`;
+        btnPause.style.display = `block`;
+
+    } else {
+        musicPlayer.pause(); 
+        btnPause.style.display = `none`;
+        btnPlay.style.display = `block`;
+    }
+}
+
+function entrar() {
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            alert(`Um ou mais campos em branco`)
+            return false;
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/votacao.html";
+                    }, 1000);
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+</script>

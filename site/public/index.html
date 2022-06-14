@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/styleA.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <span class="logo">HARMONY</span>
+            <ul class="navbar">
+                <li><a href="index.html" class="here">Home</a></li>
+                <li>|</li>
+                <li><a href="LoginA.html">Login</a></li>
+                <li><a href="CadastroA.html">Cadastro</a></li>
+                <li>|</li>
+                <li>
+                    <a href="HomeB.html">
+                        <img src="assets/imgs/sol.gif">
+                    </a>
+                </li>
+                <li>
+                    <img src="assets/imgs/musicOn.png" onclick="playPause()" id="btnPlay">
+                    <img src="assets/imgs/musicOff.png" onclick="playPause()" style="display:none;" id="btnPause">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="container home">
+            <span class="title">Descubra o meu universo musical!</span>
+        </div>
+    </div>
+    <div class="artistas">
+        <span>Comece conhecendo alguns artistas...</span>
+        <div class="container">
+            <div class="box">
+                <a href="https://open.spotify.com/artist/699OTQXzgjhIYAHMy9RyPD?si=CJMKuazhTFOS2Go_HizU7A">
+                    <img class="portrait" src="assets/imgs/carti.png">
+                </a>
+                <span>Playboi Carti</span>
+            </div>
+            <div class="box">
+                <a href="https://open.spotify.com/artist/0Y5tJX1MQlPlqiwlOH1tJY?si=O90MrKGqSLy1YhvEIZx5UQ">
+                    <img class="portrait" src="assets/imgs/travis.png">
+                </a>
+                <span>Travi$ Scott</span>
+            </div>
+            <div class="box">
+                <a href="https://open.spotify.com/artist/4r63FhuTkUYltbVAg5TQnk?si=SolwYXGaSVuw440kSKflQw">
+                    <img class="portrait" src="assets/imgs/baby.png">
+                </a>
+                <span>DaBaby</span>
+            </div>
+        </div>
+    </div>
+    <div class="albuns">
+        <span>Que tal uns Albuns?</span>
+        <div class="container">
+            <div class="cardAlbum">
+                <a href="https://open.spotify.com/album/41GuZcammIkupMPKH2OJ6I?si=mvPFY5mVSg6qCTOGEkw6Hw">
+                    <img src="assets/imgs/Astroworld.jpg" class="cover">
+                </a>
+                <div class="alinhador">
+                    <h4>ASTROWORLD</h4>
+                    <span>Travi$ Scott</span>
+                </div>
+            </div>
+            <div class="cardAlbum">
+                <a href="https://open.spotify.com/album/2QRedhP5RmKJiJ1i8VgDGR?si=NnpRy5owTHqXOUk9Vlncaw">
+                    <img src="assets/imgs/wholelottared.png" class="cover">
+                </a>
+                <div class="alinhador">
+                    <h4>Whole Lotta Red</h4>
+                    <span>Playboi Carti</span>
+                </div>
+            </div>
+            <div class="cardAlbum">
+                <a href="https://open.spotify.com/album/1NsTSXjVNE7XmZ8PmyW0wl?si=AbIx5COwQVukIgjv0JCdtw">
+                    <img src="assets/imgs/KIRK.png" class="cover">
+                </a>
+                <div class="alinhador">
+                    <h4>KIRK</h4>
+                    <span>DaBaby</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="albuns Playlist">
+        <span>Por fim, e umas playlists?</span>
+        <div class="container">
+            <div class="cardAlbum">
+                <a href="https://open.spotify.com/playlist/0yco6x5pw5GVgLgPkVI0FO?si=288e63ee6a7448dc">
+                    <img src="assets/imgs/trxpstar.jpeg" class="cover" style="height:400px;">
+                </a>
+                <div class="alinhador">
+                    <h4>trxpstar</h4>
+                    <span>by Alberani</span>
+                </div>
+            </div>
+            <div class="cardAlbum">
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DWTl4y3vgJOXW?si=c24c6f2895234132">
+                    <img src="assets/imgs/lockedin.jpg" class="cover" style="height:400px;">
+                </a>
+                <div class="alinhador">
+                    <h4>Locked In</h4>
+                    <span>by Spotify</span>
+                </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <span>Projetado por Pedro Alberani &hearts; </span>
+            <audio id="player" loop>
+                <source src="assets/music/highest.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function playPause() {
+    var musicPlayer = document.getElementById('player');
+    if (musicPlayer.paused) {
+        musicPlayer.play();
+        btnPlay.style.display = `none`;
+        btnPause.style.display = `block`;
+
+    } else {
+        musicPlayer.pause(); 
+        btnPause.style.display = `none`;
+        btnPlay.style.display = `block`;
+    }
+}
+</script>

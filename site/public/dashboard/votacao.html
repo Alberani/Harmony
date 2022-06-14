@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony | Votação</title>
+    <link rel="stylesheet" href="../css/styleA.css">
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+</head>
+
+<body onload="atualizarFeed()" class="log">
+    <div class="headerLeft">
+        <h1>HARMONY</h1>
+        <div class="hello">
+            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+        </div>
+        <a href="votacao.html">  
+            <button class="btnHeader Dest">Votação</button>
+        </a>
+        <a href="posts.html">
+            <button class="btnHeader">Posts</button>
+        </a>
+        <button class="btnHeader" onclick="limparSessao()">Sair</button>
+    </div>
+    <div class="dash">
+        <div class="graph">
+            <canvas id="canvas_grafico"></canvas>
+        </div>
+        <span class="pergunta">Qual dos Lados você mais curtiu?</span>
+        <div class="vote">
+            <div class="btns">
+                <div class="btnSol" onclick="votarSol()">
+                    <img src="../assets/imgs/sol.gif">
+                </div>
+                <div class="btnLua" onclick="votarLua()">
+                    <img src="../assets/imgs/lua.gif">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    function atualizarFeed() {
+        fetch(`../medidas/pegarInfo`)
+        .then((res) => {
+            res.json().then((resposta) => {
+                const data = {
+                    
+                    labels: ['Sol','Lua',],
+                        datasets: [{
+                            data: [resposta[0].Sol, resposta[0].Lua],
+                            backgroundColor: ['#8C0000','#5B008C',],                            
+                            hoverOffset: 4
+                        }]
+                    };
+
+
+                const config = {
+                    type: 'doughnut',
+                    data: data,
+                    options: {}
+                };
+
+                const grafico = new Chart(document.getElementById('canvas_grafico'), config);
+            });
+        })
+        .catch((erro) => {
+            console.error(`Erro na obtenção dos dados: ${erro.message}`);
+        });
+    }
+
+    function votarSol() {
+        fetch(`../medidas/votar?idUsuario=${sessionStorage.ID_USUARIO}&voto=S`)
+        .then((res) => {
+            res.json().then((resposta) => {
+            document.location.reload(true) 
+            });
+        })
+        .catch((erro) => {
+            console.error(`Erro ao votar no Sol: ${erro.message}`);
+        });
+    }
+
+    function votarLua() {
+        fetch(`../medidas/votar?idUsuario=${sessionStorage.ID_USUARIO}&voto=L`)
+        .then((res) => {
+            res.json().then((resposta) => {
+            document.location.reload(true)    
+            });
+        })
+        .catch((erro) => {
+            console.error(`Erro ao votar na Lua: ${erro.message}`);
+        });
+    }
+
+    function limparSessao() {
+    sessionStorage.clear();
+    window.location = "../loginA.html";
+    }
+</script>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="css/styleB.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <span class="logo">HARMONY</span>
+            <ul class="navbar">
+                <li><a href="HomeB.html" class="here">Home</a></li>
+                <li>|</li>
+                <li><a href="LoginB.html">Login</a></li>
+                <li><a href="CadastroB.html">Cadastro</a></li>
+                <li>|</li>
+                <li>
+                    <a href="index.html">
+                        <img src="assets/imgs/lua.gif">
+                    </a>
+                </li>
+                <li>
+                    <img src="assets/imgs/musicOn.png" onclick="playPause()" id="btnPlay">
+                    <img src="assets/imgs/musicOff.png" onclick="playPause()" style="display:none;" id="btnPause">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="container home">
+            <span class="title">Descubra o meu universo musical!</span>
+        </div>
+    </div>
+    <div class="artistas">
+        <span>Comece conhecendo alguns artistas...</span>
+        <div class="container">
+            <div class="box">
+                <a href="https://open.spotify.com/artist/4MCBfE4596Uoi2O4DtmEMz?si=0N1sxuoxSsGFiFr-y-zSVQ">
+                    <img class="portrait" src="assets/imgs/juice.png">
+                </a>
+                <span>Juice WRLD</span>
+            </div>
+            <div class="box">
+                <a href="https://open.spotify.com/artist/2kCcBybjl3SAtIcwdWpUe3?si=-UyptVJaTkaUpCug75tvpA">
+                    <img class="portrait" src="assets/imgs/peep.png">
+                </a>
+                <span>Lil Peep</span>
+            </div>
+            <div class="box">
+                <a href="https://open.spotify.com/artist/2tIP7SsRs7vjIcLrU85W8J?si=xw4rYt1SRVqatZmC6UAwUw">
+                    <img class="portrait" src="assets/imgs/laroi.png">
+                </a>
+                <span>The Kid LAROI</span>
+            </div>
+        </div>
+    </div>
+    <div class="albuns">
+        <span>Que tal uns Albuns?</span>
+        <div class="container">
+            <div class="cardAlbum">
+                <a href="https://open.spotify.com/album/1btu0SV2DOI5HoFsvUd78F?si=48766330f1084b19">
+                    <img src="assets/imgs/deathrace.png" class="cover">
+                </a>
+                <div class="alinhador">
+                    <h4>Death Race For Love</h4>
+                    <span>Juice WRLD</span>
+                </div>
+            </div>
+            <div class="cardAlbum">
+                <a href="https://open.spotify.com/album/33TJ52PuwenGmysJrwMGCe?si=2a6dab52a755416b">
+                    <img src="assets/imgs/comeover.jpg" class="cover">
+                </a>
+                <div class="alinhador">
+                    <h4>Come Over When You're Sober, Pt.1</h4>
+                    <span>Lil Peep</span>
+                </div>
+            </div>
+            <div class="cardAlbum">
+                <a href="https://open.spotify.com/album/6RuwGwQcAureaOraKJNFQG?si=54533f0b9dbb4de9">
+                    <img src="assets/imgs/fcklove.png" class="cover">
+                </a>
+                <div class="alinhador">
+                    <h4>F*CK LOVE</h4>
+                    <span>The Kid LAROI</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="albuns Playlist">
+        <span>Por fim, e umas playlists?</span>
+        <div class="container">
+            <div class="cardAlbum">
+                <a href="https://open.spotify.com/playlist/35lMCLQBqWohG4wdVYJivP?si=fc2cef3c9abf4125">
+                    <img src="assets/imgs/outloud.png" class="cover" style="height:400px;">
+                </a>
+                <div class="alinhador">
+                    <h4>Crying Out Loud</h4>
+                    <span>by Alberani</span>
+                </div>
+            </div>
+            <div class="cardAlbum">
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX6xZZEgC9Ubl?si=c50d4cb611454f96">
+                    <img src="assets/imgs/teardrop.jpg" class="cover" style="height:400px;">
+                </a>
+                <div class="alinhador">
+                    <h4>Tear Drop</h4>
+                    <span>by Spotify</span>
+                </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <span>Projetado por Pedro Alberani &hearts; </span>
+            <audio id="player" loop>
+                <source src="assets/music/starshopping.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function playPause() {
+    var musicPlayer = document.getElementById('player');
+    if (musicPlayer.paused) {
+        musicPlayer.play();
+        btnPlay.style.display = `none`;
+        btnPause.style.display = `block`;
+
+    } else {
+        musicPlayer.pause(); 
+        btnPause.style.display = `none`;
+        btnPlay.style.display = `block`;
+    }
+}
+</script>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="css/styleA.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <span class="logo">HARMONY</span>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li>|</li>
+                <li><a href="LoginA.html">Login</a></li>
+                <li><a href="CadastroA.html" class="here">Cadastro</a></li>
+                <li>|</li>
+                <li>
+                    <a href="CadastroB.html">
+                        <img src="assets/imgs/sol.gif">
+                    </a>
+                </li>
+                <li>
+                    <img src="assets/imgs/musicOn.png" onclick="playPause()" id="btnPlay">
+                    <img src="assets/imgs/musicOff.png" onclick="playPause()" style="display:none;" id="btnPause">
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="container">
+            <div class="card">
+                <h2>Bem Vindo!</h2>
+                <div class="separador">
+                    <span class="tipo_campo">Nome:</span>
+                    <input id="nome_input" type="text" placeholder="Nome">
+                </div>
+                <div class="separador">
+                    <span class="tipo_campo">E-mail:</span>
+                    <input id="email_input" type="text" placeholder="nome@email.com">
+                </div>
+                <div class="separador">
+                    <span class="tipo_campo">Senha:</span>
+                    <input id="senha_input" type="password" placeholder="******">
+                </div>
+                <div class="separador">
+                    <span class="tipo_campo">Confirmação da Senha:</span>
+                    <input id="confirmacao_senha_input" type="password" placeholder="******">
+                </div>
+                <button class="btn" onclick="cadastrar()">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <span>Projetado por Pedro Alberani &hearts; </span>
+            <audio id="player" loop>
+                <source src="assets/music/highest.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+    </div>
+</body>
+</html>,
+<script>
+    function playPause() {
+    var musicPlayer = document.getElementById('player');
+    if (musicPlayer.paused) {
+        musicPlayer.play();
+        btnPlay.style.display = `none`;
+        btnPause.style.display = `block`;
+
+    } else {
+        musicPlayer.pause(); 
+        btnPause.style.display = `none`;
+        btnPlay.style.display = `block`;
+    }
+    }
+
+    function cadastrar() {
+            var nomeVar = nome_input.value;
+            var emailVar = email_input.value;
+            var senhaVar = senha_input.value;
+            var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+            if ((nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") || (senhaVar.length < 4) || (senhaVar !== confirmacaoSenhaVar) ) {
+                alert(`Confira os dados informados`);
+                return false;
+            }
+
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar
+                })
+            }).then(function (resposta) {
+
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                    setTimeout(() => {
+                        window.location = "loginA.html";
+                    }, "2000")
+                    
+                    limparFormulario();
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+            return false;
+        }
+</script>
